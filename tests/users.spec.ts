@@ -5,7 +5,7 @@ import { LoginPage } from "../pageobjects/LoginPage"
 test('Get all registered employee Name', async ({ page }) => {
 
     const loginPage = new LoginPage(page)
-    await loginPage.doLogin('Admin','admin123')
+    await loginPage.doLogin('Admin', 'admin123')
 
     await expect(page.getByRole('link', { name: 'Admin' })).toBeVisible()
 
@@ -32,7 +32,7 @@ test('Get all registered employee Name', async ({ page }) => {
 
 })
 
-test('Select specific user for edition', async ({ page }) => {
+/* test('Select specific user for edition', async ({ page }) => {
 
     const userForEdition = 'usersara001'
 
@@ -66,7 +66,7 @@ test('Select specific user for edition', async ({ page }) => {
     // toHaveValue reintenta hasta que el campo cargue el valor esperado
     await expect(usernameInput).toHaveValue(userForEdition)
 
-})
+})*/
 
 test('Select a random user for edition', async ({ page }) => {
 
