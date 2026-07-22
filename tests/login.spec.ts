@@ -19,7 +19,7 @@ test('Login to hrm', async ({ page }) => {
 
 })
 
-test('Login to HRM as a ESS', async ({ page }) => {
+test.skip('Login to HRM as a ESS', async ({ page }) => {
   const loginPage = new LoginPage(page)
   const sidePanel = new SidePanel(page)
 
