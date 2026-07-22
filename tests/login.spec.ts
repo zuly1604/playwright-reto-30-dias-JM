@@ -5,8 +5,8 @@ import { SideMenuOption, SidePanel } from '../components/SidePanel'
 test('Login to hrm', async ({ page }) => {
   const loginPage = new LoginPage(page)
   await loginPage.doLogin('Admin', 'admin123')
-  //await expect(page).toHaveURL(/dashboard/)
-  //await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible()
+  await expect(page).toHaveURL(/dashboard/)
+  await expect(page.getByRole('heading', { name: 'Dashboard' })).toBeVisible()
 
   const sidePanel = new SidePanel(page)
 
@@ -17,6 +17,16 @@ test('Login to hrm', async ({ page }) => {
   await sidePanel.searchAnOption(SideMenuOption.ADMIN)
   await sidePanel.searchAnOption(SideMenuOption.LEAVE)
 
+})
+
+test('Login to HRM as a ESS', async ({ page }) => {
+  const loginPage = new LoginPage(page)
+  const sidePanel = new SidePanel(page)
+
+  await loginPage.loginAsEss()
+  await expect(page.getByRole('link', { name: 'Admin' })).not.toBeVisible()
+  await sidePanel.clickOnOption(SideMenuOption.BUZZ)
+  await sidePanel.clickOnOption(SideMenuOption.DASHBOARD)
 })
 
 test('Login to hrm invalid', async ({ page }) => {
